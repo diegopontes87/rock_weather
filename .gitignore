@@ -47,4 +47,4 @@ app.*.map.json
 # Generated files
 *.g.dart
 *.freezed.dart
-env/.weather_env.json
+lib/env/.weather_env.json

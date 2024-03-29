@@ -5,4 +5,7 @@ class AppConstants {
     'Melbourne',
     'Monte Carlo',
   ];
+
+  static const String queryParameter = 'q';
+  static const String apiKeyParameter = 'appid';
 }

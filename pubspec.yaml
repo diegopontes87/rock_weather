@@ -19,11 +19,14 @@ dependencies:
   multiple_result: ^5.1.0
   cupertino_icons: ^1.0.2
   shared_preferences: ^2.2.2
-  dio: ^5.4.2+1
   freezed: ^2.4.5
   freezed_annotation: ^2.4.1
   go_router: ^12.1.1
   get_it: ^7.6.4
+
+  #Client and Connection Check
+  dio: ^5.4.2+1
+  connectivity_plus: ^6.0.1
 
   flutter_localizations:
     sdk: flutter
