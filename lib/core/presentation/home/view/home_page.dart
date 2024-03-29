@@ -8,7 +8,7 @@ import 'package:rock_weather/core/presentation/home/widgets/city_weather_card.da
 import 'package:rock_weather/core/presentation/home/widgets/weather_loading.dart';
 import 'package:rock_weather/dependencies/service_locator.dart';
 import 'package:rock_weather/design/colors/app_colors.dart';
-import 'package:rock_weather/design/widgets/app_custom_bar.dart';
+import 'package:rock_weather/design/widgets/custom_app_bar.dart';
 import 'package:rock_weather/shared/res/app_assets.dart';
 import 'package:rock_weather/shared/res/app_texts.dart';
 
@@ -56,7 +56,10 @@ class _HomePageState extends State<HomePage> {
             extendBodyBehindAppBar: true,
             appBar: const PreferredSize(
               preferredSize: Size.fromHeight(56),
-              child: AppCustomBar(),
+              child: CustomAppBar(
+                title: AppTexts.appTitle,
+                backButtonIsVisible: false,
+              ),
             ),
             body: GestureDetector(
               onTap: () {
@@ -65,7 +68,10 @@ class _HomePageState extends State<HomePage> {
               child: Container(
                 height: MediaQuery.of(context).size.height,
                 width: MediaQuery.of(context).size.width,
-                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 48),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 12,
+                  vertical: 48,
+                ),
                 decoration: const BoxDecoration(
                   gradient: LinearGradient(
                     begin: Alignment.topCenter,

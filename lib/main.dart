@@ -3,8 +3,8 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:rock_weather/core/presentation/home/view/home_page.dart';
 import 'package:rock_weather/dependencies/service_locator.dart';
+import 'package:rock_weather/shared/router/app_router.dart';
 
 Future<void> main() async {
   runZonedGuarded<Future<void>>(
@@ -25,11 +25,11 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       theme: ThemeData(
         useMaterial3: true,
       ),
-      home: const HomePage(),
+      routerConfig: AppRouter.getRouter(),
     );
   }
 }
