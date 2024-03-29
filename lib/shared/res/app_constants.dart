@@ -1,11 +1,6 @@
 class AppConstants {
-  static const List<String> trackedCities = [
-    'Silverstone',
-    'São Paulo',
-    'Melbourne',
-    'Monte Carlo',
-  ];
-
   static const String queryParameter = 'q';
   static const String apiKeyParameter = 'appid';
+  static const String celsiusTemp = '°C';
+  static String iconUrl(String icon) => 'https://openweathermap.org/img/wn/$icon@2x.png';
 }

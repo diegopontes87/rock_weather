@@ -35,6 +35,8 @@ void registerHomeDependencies() {
   );
 
   serviceLocator.registerLazySingleton(
-    () => HomeCubit(),
+    () => HomeCubit(
+      getWeatherByCityUsecase: serviceLocator.get<GetWeatherByCityUsecase>(),
+    )..getWeatherForCities(),
   );
 }

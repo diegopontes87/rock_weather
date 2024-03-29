@@ -12,7 +12,7 @@ class WeatherData {
     this.dataCalculationTime,
     this.timezone,
     this.id,
-    this.name,
+    this.locationName,
     this.coordinates,
     this.coreWeatherInfo,
     this.wind,
@@ -25,7 +25,7 @@ class WeatherData {
   final int? dataCalculationTime;
   final int? timezone;
   final int? id;
-  final String? name;
+  final String? locationName;
   final Coordinates? coordinates;
   final CoreWeatherInfo? coreWeatherInfo;
   final Wind? wind;

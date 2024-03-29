@@ -26,6 +26,15 @@ class WeatherRepositoryImpl implements WeatherRepository {
       }
     }
 
-    return response;
+    if (response.isSuccess() && response.tryGetSuccess() != null) {
+      final weatherDataModel = response.tryGetSuccess()!;
+      _localDataSource.saveCityWeatherLocally(cityName: cityName, weatherDataModel: weatherDataModel);
+    }
+
+    return response.when((weatherDataModel) {
+      return Success(weatherDataModel.toEntity());
+    }, (error) {
+      return Error(error);
+    });
   }
 }
