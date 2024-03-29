@@ -10,22 +10,24 @@ class WeatherLoading extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          LottieBuilder.asset(
-            AppAssets.weatherAnimation,
-          ),
-          const Text(
-            'Loading...',
-            style: TextStyle(
-              color: AppColors.white,
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
+    return Expanded(
+      child: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            LottieBuilder.asset(
+              AppAssets.weatherAnimation,
             ),
-          ),
-        ],
+            const Text(
+              'Loading...',
+              style: TextStyle(
+                color: AppColors.white,
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

@@ -54,4 +54,18 @@ class HomeCubit extends Cubit<HomeState> {
       );
     }, (error) {});
   }
+
+  void searchCity(String searchedCityName) {
+    final citiesWeatherList = <WeatherData>[];
+    final searchedCities = <WeatherData>[];
+    citiesWeatherList.addAll(state.citiesWeather);
+    for (final cityWeatherData in citiesWeatherList) {
+      if (cityWeatherData.locationName!.toLowerCase().startsWith(searchedCityName.toLowerCase())) {
+        searchedCities.add(cityWeatherData);
+      }
+      emit(
+        state.copyWith(searchedCities: searchedCities),
+      );
+    }
+  }
 }

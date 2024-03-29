@@ -3,10 +3,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 import 'package:lottie/lottie.dart';
 import 'package:rock_weather/core/presentation/home/cubit/home_cubit.dart';
+import 'package:rock_weather/core/presentation/home/widgets/app_text_field.dart';
 import 'package:rock_weather/core/presentation/home/widgets/city_weather_card.dart';
 import 'package:rock_weather/core/presentation/home/widgets/weather_loading.dart';
 import 'package:rock_weather/dependencies/service_locator.dart';
 import 'package:rock_weather/design/colors/app_colors.dart';
+import 'package:rock_weather/design/widgets/app_custom_bar.dart';
 import 'package:rock_weather/shared/res/app_assets.dart';
 import 'package:rock_weather/shared/res/app_texts.dart';
 
@@ -19,11 +21,29 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   late HomeCubit _cubit;
+  late FocusNode searchFocusNode;
+  late TextEditingController searchController;
 
   @override
   void initState() {
     super.initState();
+    searchFocusNode = FocusNode();
+    searchController = TextEditingController();
     _cubit = serviceLocator.get<HomeCubit>();
+    _searchControllerListener();
+  }
+
+  @override
+  void dispose() {
+    searchFocusNode.dispose();
+    searchController.dispose();
+    super.dispose();
+  }
+
+  void _searchControllerListener() {
+    searchController.addListener(() {
+      _cubit.searchCity(searchController.text);
+    });
   }
 
   @override
@@ -33,69 +53,94 @@ class _HomePageState extends State<HomePage> {
       child: BlocBuilder<HomeCubit, HomeState>(
         builder: (context, state) {
           return Scaffold(
-            appBar: AppBar(
-              centerTitle: true,
-              backgroundColor: AppColors.blue,
-              title: const Text(
-                AppTexts.appTitle,
-                style: TextStyle(
-                  color: AppColors.white,
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
+            extendBodyBehindAppBar: true,
+            appBar: const PreferredSize(
+              preferredSize: Size.fromHeight(56),
+              child: AppCustomBar(),
             ),
-            body: Container(
-              height: MediaQuery.of(context).size.height,
-              width: MediaQuery.of(context).size.width,
-              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 48),
-              decoration: const BoxDecoration(
-                gradient: LinearGradient(
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                  colors: AppColors.backgroundGradient,
+            body: GestureDetector(
+              onTap: () {
+                searchFocusNode.unfocus();
+              },
+              child: Container(
+                height: MediaQuery.of(context).size.height,
+                width: MediaQuery.of(context).size.width,
+                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 48),
+                decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    colors: AppColors.backgroundGradient,
+                  ),
                 ),
-              ),
-              child: Column(
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  Visibility(
-                    visible: state.isLoading,
-                    child: const Expanded(
-                      child: WeatherLoading(),
-                    ),
-                  ),
-                  Visibility(
-                    visible: !state.isLoading,
-                    maintainAnimation: true,
-                    maintainState: true,
-                    child: AnimatedOpacity(
-                      opacity: state.isLoading ? 0 : 1,
-                      curve: Curves.easeInOut,
-                      duration: const Duration(seconds: 1),
-                      child: Column(
-                        children: state.citiesWeather.map(
-                          (weather) {
-                            return Column(
-                              children: [
-                                CityWeatherCard(
-                                  weatherData: weather,
-                                ),
-                                const Gap(12),
-                              ],
-                            );
-                          },
-                        ).toList(),
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      Visibility(
+                        visible: state.isLoading,
+                        child: const WeatherLoading(),
                       ),
-                    ),
+                      Visibility(
+                        visible: !state.isLoading,
+                        maintainAnimation: true,
+                        maintainState: true,
+                        child: Column(
+                          children: [
+                            Gap(kToolbarHeight + AppBar().preferredSize.height),
+                            AppTextField(
+                              focusNode: searchFocusNode,
+                              prefixIcon: Icons.search,
+                              hintText: AppTexts.search,
+                              keyboardType: TextInputType.text,
+                              textInputAction: TextInputAction.done,
+                              controller: searchController,
+                              onFieldSubmitted: (v) {
+                                searchFocusNode.unfocus();
+                              },
+                            ),
+                            const Gap(12),
+                            AnimatedOpacity(
+                              opacity: state.isLoading ? 0 : 1,
+                              curve: Curves.easeInOut,
+                              duration: const Duration(seconds: 1),
+                              child: Column(
+                                children: searchController.text.isEmpty
+                                    ? state.citiesWeather.map(
+                                        (weather) {
+                                          return Column(
+                                            children: [
+                                              CityWeatherCard(
+                                                weatherData: weather,
+                                              ),
+                                              const Gap(12),
+                                            ],
+                                          );
+                                        },
+                                      ).toList()
+                                    : state.searchedCities.map(
+                                        (weather) {
+                                          return Column(
+                                            children: [
+                                              CityWeatherCard(
+                                                weatherData: weather,
+                                              ),
+                                              const Gap(12),
+                                            ],
+                                          );
+                                        },
+                                      ).toList(),
+                              ),
+                            ),
+                            Lottie.asset(
+                              AppAssets.ballonAnimation,
+                              repeat: false,
+                            )
+                          ],
+                        ),
+                      )
+                    ],
                   ),
-                  const Spacer(),
-                  if (!state.isLoading)
-                    Lottie.asset(
-                      AppAssets.ballonAnimation,
-                      repeat: false,
-                    )
-                ],
+                ),
               ),
             ),
           );

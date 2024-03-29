@@ -14,6 +14,7 @@ class WeatherDataModel {
   WeatherDataModel({
     this.base,
     this.visibility,
+    this.dt,
     this.timezone,
     this.id,
     this.name,
@@ -26,6 +27,7 @@ class WeatherDataModel {
   });
   final String? base;
   final int? visibility;
+  final int? dt;
   final int? timezone;
   final int? id;
   final String? name;
@@ -49,7 +51,7 @@ class WeatherDataModel {
   WeatherData toEntity() => WeatherData(
         base: base,
         visibility: visibility,
-        dataCalculationTime: DateTime.now().millisecondsSinceEpoch,
+        dataCalculationTime: dt,
         timezone: timezone,
         id: id,
         locationName: name,
