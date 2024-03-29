@@ -17,6 +17,8 @@ class WindModel {
 
   factory WindModel.fromJson(Map<String, Object?> json) => _$WindModelFromJson(json);
 
+  Map<String, dynamic> toJson() => _$WindModelToJson(this);
+
   Wind toEntity() => Wind(
         speed: speed,
         gust: gust,

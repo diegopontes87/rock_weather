@@ -19,6 +19,8 @@ class WeatherModel {
 
   factory WeatherModel.fromJson(Map<String, Object?> json) => _$WeatherModelFromJson(json);
 
+  Map<String, dynamic> toJson() => _$WeatherModelToJson(this);
+
   WeatherInfo toEntity() => WeatherInfo(
         id: id,
         status: main,

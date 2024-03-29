@@ -15,6 +15,8 @@ class CoordinatesModel {
 
   factory CoordinatesModel.fromJson(Map<String, Object?> json) => _$CoordinatesModelFromJson(json);
 
+  Map<String, dynamic> toJson() => _$CoordinatesModelToJson(this);
+
   Coordinates toEntity() => Coordinates(
         latitude: lat,
         longitude: lon,

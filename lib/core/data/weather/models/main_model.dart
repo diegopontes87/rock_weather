@@ -27,6 +27,8 @@ class MainModel {
 
   factory MainModel.fromJson(Map<String, Object?> json) => _$MainModelFromJson(json);
 
+  Map<String, dynamic> toJson() => _$MainModelToJson(this);
+
   CoreWeatherInfo toEntity() => CoreWeatherInfo(
         temp: temp,
         tempSensation: feelsLike,

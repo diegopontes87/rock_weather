@@ -13,6 +13,8 @@ class RainModel {
 
   factory RainModel.fromJson(Map<String, Object?> json) => _$RainModelFromJson(json);
 
+  Map<String, dynamic> toJson() => _$RainModelToJson(this);
+
   Rain toEntity() => Rain(
         rainVolumeLastHour: d1h,
       );

@@ -3,9 +3,20 @@ import 'package:rock_weather/dependencies/service_locator.dart';
 import 'package:rock_weather/env/env.dart';
 import 'package:rock_weather/shared/adapters/connection/connection_adapter.dart';
 import 'package:rock_weather/shared/adapters/connection/connection_adapter_impl.dart';
+import 'package:rock_weather/shared/adapters/local_storage/local_storage_adapter.dart';
+import 'package:rock_weather/shared/adapters/local_storage/local_storage_adapter_impl.dart';
 import 'package:rock_weather/shared/http/http_client.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-void registerGlobalDependencies() {
+Future<void> registerGlobalDependencies() async {
+  final sharedPreferences = await SharedPreferences.getInstance();
+
+  serviceLocator.registerSingleton<LocalStorageAdapter>(
+    LocalStorageAdapterImpl(
+      sharedPreferences: sharedPreferences,
+    ),
+  );
+
   serviceLocator.registerSingleton<ConnectionAdapter>(
     ConnectionAdapterImpl(),
   );

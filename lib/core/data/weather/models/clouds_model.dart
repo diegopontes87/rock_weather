@@ -12,6 +12,8 @@ class CloudsModel {
 
   factory CloudsModel.fromJson(Map<String, Object?> json) => _$CloudsModelFromJson(json);
 
+  Map<String, dynamic> toJson() => _$CloudsModelToJson(this);
+
   Clouds toEntity() => Clouds(
         cloudinessPercentage: all,
       );

@@ -5,6 +5,9 @@ import 'package:rock_weather/dependencies/home/home_dependencies.dart';
 GetIt serviceLocator = GetIt.instance;
 
 Future<void> initializeDependencies() async {
-  registerGlobalDependencies();
-  registerHomeDependencies();
+  await registerGlobalDependencies().then(
+    (_) {
+      registerHomeDependencies();
+    },
+  );
 }
