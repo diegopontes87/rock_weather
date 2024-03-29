@@ -8,6 +8,7 @@ class CloudsModel {
   CloudsModel({
     this.all,
   });
+
   final int? all;
 
   factory CloudsModel.fromJson(Map<String, Object?> json) => _$CloudsModelFromJson(json);

@@ -18,12 +18,12 @@ class WeatherDataModel {
     this.timezone,
     this.id,
     this.name,
-    this.coordinates,
+    this.coord,
     this.main,
     this.wind,
     this.rain,
     this.clouds,
-    this.weathers,
+    this.weather,
   });
   final String? base;
   final int? visibility;
@@ -31,18 +31,12 @@ class WeatherDataModel {
   final int? timezone;
   final int? id;
   final String? name;
-  @JsonKey(name: 'coord')
-  final CoordinatesModel? coordinates;
-  @JsonKey(name: 'main')
+  final CoordinatesModel? coord;
   final MainModel? main;
-  @JsonKey(name: 'wind')
   final WindModel? wind;
-  @JsonKey(name: 'rain')
   final RainModel? rain;
-  @JsonKey(name: 'clouds')
   final CloudsModel? clouds;
-  @JsonKey(name: 'weather')
-  final List<WeatherModel>? weathers;
+  final List<WeatherModel>? weather;
 
   factory WeatherDataModel.fromJson(Map<String, Object?> json) => _$WeatherDataModelFromJson(json);
 
@@ -55,11 +49,11 @@ class WeatherDataModel {
         timezone: timezone,
         id: id,
         locationName: name,
-        coordinates: coordinates?.toEntity(),
+        coordinates: coord?.toEntity(),
         coreWeatherInfo: main?.toEntity(),
         wind: wind?.toEntity(),
         rain: rain?.toEntity(),
         clouds: clouds?.toEntity(),
-        weathers: weathers?.map((weather) => weather.toEntity()).toList(),
+        weathers: weather?.map((weather) => weather.toEntity()).toList(),
       );
 }
