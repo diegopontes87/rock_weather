@@ -16,7 +16,16 @@ class WeatherRepositoryImpl implements WeatherRepository {
         _remoteDataSource = remoteDataSource;
 
   @override
-  Future<Result<WeatherData, AppError>> getCityWeather({required String cityName}) {
-    throw UnimplementedError();
+  Future<Result<WeatherData, AppError>> getCityWeather({required String cityName}) async {
+    final response = await _remoteDataSource.getCityWeather(cityName: cityName);
+
+    if (response.isError() && response.tryGetError()?.errorType == AppErrorType.noConnectionError) {
+      final localCityWeather = await _localDataSource.getCityWeatherLocally(cityName: cityName);
+      if (localCityWeather != null) {
+        return Success(localCityWeather.toEntity());
+      }
+    }
+
+    return response;
   }
 }
