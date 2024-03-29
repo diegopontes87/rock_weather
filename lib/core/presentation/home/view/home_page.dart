@@ -73,17 +73,9 @@ class _HomePageState extends State<HomePage> {
                     colors: AppColors.backgroundGradient,
                   ),
                 ),
-                child: SingleChildScrollView(
-                  child: Column(
-                    children: [
-                      Visibility(
-                        visible: state.isLoading,
-                        child: const WeatherLoading(),
-                      ),
-                      Visibility(
-                        visible: !state.isLoading,
-                        maintainAnimation: true,
-                        maintainState: true,
+                child: state.isLoading
+                    ? const WeatherLoading()
+                    : SingleChildScrollView(
                         child: Column(
                           children: [
                             Gap(kToolbarHeight + AppBar().preferredSize.height),
@@ -99,48 +91,41 @@ class _HomePageState extends State<HomePage> {
                               },
                             ),
                             const Gap(12),
-                            AnimatedOpacity(
-                              opacity: state.isLoading ? 0 : 1,
-                              curve: Curves.easeInOut,
-                              duration: const Duration(seconds: 1),
-                              child: Column(
-                                children: searchController.text.isEmpty
-                                    ? state.citiesWeather.map(
-                                        (weather) {
-                                          return Column(
-                                            children: [
-                                              CityWeatherCard(
-                                                weatherData: weather,
-                                              ),
-                                              const Gap(12),
-                                            ],
-                                          );
-                                        },
-                                      ).toList()
-                                    : state.searchedCities.map(
-                                        (weather) {
-                                          return Column(
-                                            children: [
-                                              CityWeatherCard(
-                                                weatherData: weather,
-                                              ),
-                                              const Gap(12),
-                                            ],
-                                          );
-                                        },
-                                      ).toList(),
-                              ),
+                            Column(
+                              children: searchController.text.isEmpty
+                                  ? state.citiesWeather.map(
+                                      (weather) {
+                                        return Column(
+                                          children: [
+                                            CityWeatherCard(
+                                              weatherData: weather,
+                                            ),
+                                            const Gap(12),
+                                          ],
+                                        );
+                                      },
+                                    ).toList()
+                                  : state.searchedCities.map(
+                                      (weather) {
+                                        return Column(
+                                          children: [
+                                            CityWeatherCard(
+                                              weatherData: weather,
+                                            ),
+                                            const Gap(12),
+                                          ],
+                                        );
+                                      },
+                                    ).toList(),
                             ),
                             Lottie.asset(
                               AppAssets.ballonAnimation,
+                              animate: true,
                               repeat: false,
                             )
                           ],
                         ),
-                      )
-                    ],
-                  ),
-                ),
+                      ),
               ),
             ),
           );
