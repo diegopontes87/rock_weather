@@ -1,4 +1,5 @@
 import 'package:go_router/go_router.dart';
+import 'package:rock_weather/core/domain/weather/entities/weather_data_entity.dart';
 import 'package:rock_weather/core/presentation/forecast/view/forecast_page.dart';
 import 'package:rock_weather/core/presentation/home/view/home_page.dart';
 import 'package:rock_weather/shared/router/app_routes.dart';
@@ -21,7 +22,7 @@ class AppRouter {
         GoRoute(
           path: AppRoutes.forecastPage,
           builder: (context, state) => ForecastPage(
-            cityName: state.extra as String,
+            weatherData: state.extra as WeatherData,
           ),
         ),
       ],

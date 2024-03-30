@@ -55,8 +55,8 @@ class WeatherRepositoryImpl implements WeatherRepository {
       _localDataSource.saveCityForecastLocally(cityName: cityName, cityForecastModel: cityForecastModel);
     }
 
-    return response.when((weatherDataModel) {
-      return Success(weatherDataModel.toEntity());
+    return response.when((cityForecastModel) {
+      return Success(cityForecastModel.toEntity());
     }, (error) {
       return Error(error);
     });
