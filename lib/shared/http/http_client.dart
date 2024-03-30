@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:dio/dio.dart';
 import 'package:rock_weather/shared/adapters/connection/connection_adapter.dart';
 import 'package:rock_weather/shared/errors/app_error.dart';
@@ -16,23 +14,18 @@ class HttpClient {
   });
 
   Future<Map<String, dynamic>> request(AppRequest request) async {
-    try {
-      await checkAppConnection();
-      final response = await dio.request(
-        request.path,
-        queryParameters: request.queryParameters,
-        options: Options(
-          method: request.method.type,
-        ),
-      );
-      if (response.statusCode == successResultCode) {
-        return response.data;
-      }
-      throw AppError(errorType: AppErrorType.serviceError);
-    } catch (e) {
-      log('Error trying to make a request to the ${request.path} path: $e');
-      throw AppError(errorType: AppErrorType.untrackedError);
+    await checkAppConnection();
+    final response = await dio.request(
+      request.path,
+      queryParameters: request.queryParameters,
+      options: Options(
+        method: request.method.type,
+      ),
+    );
+    if (response.statusCode == successResultCode) {
+      return response.data;
     }
+    throw AppError(errorType: AppErrorType.serviceError);
   }
 
   Future<void> checkAppConnection() async {

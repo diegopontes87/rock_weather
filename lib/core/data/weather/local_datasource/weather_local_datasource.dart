@@ -34,11 +34,11 @@ class WeatherLocalDataSource {
     required CityForecastModel cityForecastModel,
   }) async {
     final json = cityForecastModel.toJson();
-    await _localStorageAdapter.setString(cityName, jsonEncode(json));
+    await _localStorageAdapter.setString('${cityName}forecastKey', jsonEncode(json));
   }
 
   Future<CityForecastModel?> getCityForecastLocally({required String cityName}) async {
-    final jsonString = await _localStorageAdapter.getString(cityName);
+    final jsonString = await _localStorageAdapter.getString('${cityName}forecastKey');
     if (jsonString.isNotEmpty) {
       final jsonDecoded = jsonDecode(jsonString);
       final weatherDataModel = CityForecastModel.fromJson(jsonDecoded);

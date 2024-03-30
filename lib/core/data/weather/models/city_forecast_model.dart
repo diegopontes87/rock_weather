@@ -5,13 +5,14 @@ import 'package:rock_weather/core/domain/weather/entities/city_forecast_entity.d
 
 part 'city_forecast_model.g.dart';
 
-@JsonSerializable()
+@JsonSerializable(explicitToJson: true)
 class CityForecastModel {
   CityForecastModel({
     this.list,
     this.cityModel,
   });
 
+  @JsonKey(name: 'city')
   final CityModel? cityModel;
   final List<WeatherDataModel>? list;
 

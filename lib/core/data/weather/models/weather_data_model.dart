@@ -9,7 +9,7 @@ import 'package:rock_weather/core/domain/weather/entities/weather_data_entity.da
 
 part 'weather_data_model.g.dart';
 
-@JsonSerializable()
+@JsonSerializable(explicitToJson: true)
 class WeatherDataModel {
   WeatherDataModel({
     this.base,
