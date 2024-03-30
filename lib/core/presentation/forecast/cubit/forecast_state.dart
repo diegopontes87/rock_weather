@@ -8,6 +8,7 @@ class ForecastState with _$ForecastState {
     required bool isError,
     required CityForecast? cityForecast,
     required Map<DateTime, List<WeatherData>> weathersByDay,
+    required AppErrorType? errorType,
   }) = _ForecastState;
 
   factory ForecastState.initial({
@@ -19,5 +20,6 @@ class ForecastState with _$ForecastState {
         isError: false,
         cityForecast: null,
         weathersByDay: {},
+        errorType: null,
       );
 }

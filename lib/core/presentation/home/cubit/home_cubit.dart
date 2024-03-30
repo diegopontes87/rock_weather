@@ -23,6 +23,8 @@ class HomeCubit extends Cubit<HomeState> {
     emit(
       state.copyWith(
         isLoading: true,
+        isError: false,
+        errorType: null,
       ),
     );
     final cities = state.cityNames;
@@ -41,18 +43,28 @@ class HomeCubit extends Cubit<HomeState> {
   }
 
   void _handleWeatherResponse(Result<WeatherData, AppError> result) {
-    result.when((weatherData) {
-      final weatherList = <WeatherData>[];
-      weatherList
-        ..addAll(state.citiesWeather)
-        ..add(weatherData);
+    result.when(
+      (weatherData) {
+        final weatherList = <WeatherData>[];
+        weatherList
+          ..addAll(state.citiesWeather)
+          ..add(weatherData);
 
-      emit(
-        state.copyWith(
-          citiesWeather: weatherList,
-        ),
-      );
-    }, (error) {});
+        emit(
+          state.copyWith(
+            citiesWeather: weatherList,
+          ),
+        );
+      },
+      (error) {
+        emit(
+          state.copyWith(
+            isError: true,
+            errorType: error.errorType,
+          ),
+        );
+      },
+    );
   }
 
   void searchCity(String searchedCityName) {

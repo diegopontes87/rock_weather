@@ -8,6 +8,7 @@ class HomeState with _$HomeState {
     required bool isError,
     required List<WeatherData> searchedCities,
     required List<WeatherData> citiesWeather,
+    required AppErrorType? errorType,
   }) = _HomeState;
 
   factory HomeState.initial() => const HomeState(
@@ -16,5 +17,6 @@ class HomeState with _$HomeState {
         isLoading: false,
         isError: false,
         citiesWeather: [],
+        errorType: null,
       );
 }

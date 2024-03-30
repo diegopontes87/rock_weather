@@ -13,6 +13,7 @@ import 'package:rock_weather/design/widgets/weather_loading.dart';
 import 'package:rock_weather/shared/res/app_assets.dart';
 import 'package:rock_weather/shared/res/app_constants.dart';
 import 'package:rock_weather/shared/res/app_texts.dart';
+import 'package:rock_weather/shared/utils/error_utils.dart';
 import 'package:rock_weather/shared/utils/weather_utils.dart';
 
 class ForecastPage extends StatefulWidget {
@@ -102,6 +103,17 @@ class _ForecastPageState extends State<ForecastPage> {
                             ),
                           ),
                           const Gap(12),
+                          if (state.isError)
+                            Text(
+                              ErrorUtils.handleError(errorType: state.errorType!),
+                              overflow: TextOverflow.ellipsis,
+                              textAlign: TextAlign.center,
+                              style: const TextStyle(
+                                color: AppColors.red,
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
                           Column(
                             children: state.weathersByDay.entries.map((weather) {
                               return Column(

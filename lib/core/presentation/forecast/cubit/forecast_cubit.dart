@@ -3,6 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:rock_weather/core/domain/weather/entities/city_forecast_entity.dart';
 import 'package:rock_weather/core/domain/weather/entities/weather_data_entity.dart';
 import 'package:rock_weather/core/domain/weather/usecases/get_forecast_by_city_usecase.dart';
+import 'package:rock_weather/shared/errors/app_error.dart';
 import 'package:rock_weather/shared/utils/date_time_utils.dart';
 
 part 'forecast_cubit.freezed.dart';
@@ -40,6 +41,8 @@ class ForecastCubit extends Cubit<ForecastState> {
         emit(
           state.copyWith(
             isLoading: false,
+            errorType: error.errorType,
+            isError: true,
           ),
         );
       },
