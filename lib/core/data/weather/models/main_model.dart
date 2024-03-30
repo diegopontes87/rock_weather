@@ -30,7 +30,7 @@ class MainModel {
   Map<String, dynamic> toJson() => _$MainModelToJson(this);
 
   CoreWeatherInfo toEntity() => CoreWeatherInfo(
-        temp: temp,
+        temp: temp?.round(),
         tempSensation: feelsLike,
         tempMin: tempMin,
         tempMax: tempMax,

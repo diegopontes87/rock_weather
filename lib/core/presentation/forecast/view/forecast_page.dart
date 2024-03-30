@@ -81,7 +81,7 @@ class _ForecastPageState extends State<ForecastPage> {
                               const Gap(8),
                               WeatherDetailCard(
                                 title: 'Temp',
-                                subtitle: '${WeatherUtils.kelvinToCelsius(widget.weatherData.coreWeatherInfo?.temp ?? 0)}${AppConstants.celsiusTemp}',
+                                subtitle: '${widget.weatherData.coreWeatherInfo?.temp ?? 0}${AppConstants.celsiusTemp}',
                               ),
                               const Gap(8),
                               WeatherDetailCard(

@@ -5,7 +5,6 @@ import 'package:rock_weather/core/domain/weather/entities/weather_data_entity.da
 import 'package:rock_weather/design/colors/app_colors.dart';
 import 'package:rock_weather/shared/res/app_constants.dart';
 import 'package:rock_weather/shared/utils/date_time_utils.dart';
-import 'package:rock_weather/shared/utils/weather_utils.dart';
 
 class ForecastDetailCard extends StatelessWidget {
   final List<WeatherData> weathers;
@@ -55,7 +54,7 @@ class ForecastDetailCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    WeatherUtils.kelvinToCelsius(weathers.first.coreWeatherInfo?.temp ?? 0),
+                    '${weathers.first.coreWeatherInfo?.temp ?? 0}',
                     style: const TextStyle(
                       color: AppColors.white,
                       fontSize: 32,
@@ -110,7 +109,7 @@ class ForecastDetailCard extends StatelessWidget {
                       ),
                       const Spacer(),
                       Text(
-                        '${WeatherUtils.kelvinToCelsius(weather.coreWeatherInfo?.temp ?? 0)}${AppConstants.celsiusTemp} - ',
+                        '${weather.coreWeatherInfo?.temp ?? 0}${AppConstants.celsiusTemp} - ',
                         style: const TextStyle(
                           color: AppColors.white,
                           fontSize: 16,

@@ -18,5 +18,6 @@ class GetCityForecastRequest implements AppRequest {
   Map<String, dynamic> get queryParameters => {
         AppConstants.queryParameter: data['city_name'],
         AppConstants.apiKeyParameter: data['apiKey'],
+        AppConstants.unitsParameter: data['units'],
       };
 }

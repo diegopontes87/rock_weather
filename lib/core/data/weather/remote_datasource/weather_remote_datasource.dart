@@ -24,6 +24,7 @@ class WeatherRemoteDataSource {
           data: {
             'city_name': cityName,
             'apiKey': Env.weatherApiKey,
+            'units': 'metric',
           },
         ),
       );
@@ -44,6 +45,7 @@ class WeatherRemoteDataSource {
           data: {
             'city_name': cityName,
             'apiKey': Env.weatherApiKey,
+            'units': 'metric',
           },
         ),
       );

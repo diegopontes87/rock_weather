@@ -10,7 +10,7 @@ class CoreWeatherInfo {
     this.pressureGroundLevel,
   });
 
-  final double? temp;
+  final int? temp;
   final double? tempSensation;
   final double? tempMin;
   final double? tempMax;
