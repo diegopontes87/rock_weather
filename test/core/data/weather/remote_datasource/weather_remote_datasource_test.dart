@@ -10,11 +10,8 @@ import 'package:rock_weather/shared/http/http_client.dart';
 
 import '../../../../jsons/city_forecast_json.dart';
 import '../../../../jsons/weather_data_json.dart';
+import '../../../../mocks/fakes.dart';
 import '../../../../mocks/global_mocks.dart';
-
-class FakeGetCityWeatherRequest extends Fake implements GetCityWeatherRequest {}
-
-class FakeGetCityForecastRequest extends Fake implements GetCityForecastRequest {}
 
 void main() {
   group(
