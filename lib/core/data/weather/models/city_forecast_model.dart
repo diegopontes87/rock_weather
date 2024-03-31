@@ -1,3 +1,4 @@
+import 'package:equatable/equatable.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:rock_weather/core/data/weather/models/city_model.dart';
 import 'package:rock_weather/core/data/weather/models/weather_data_model.dart';
@@ -6,8 +7,8 @@ import 'package:rock_weather/core/domain/weather/entities/city_forecast_entity.d
 part 'city_forecast_model.g.dart';
 
 @JsonSerializable(explicitToJson: true)
-class CityForecastModel {
-  CityForecastModel({
+class CityForecastModel extends Equatable {
+  const CityForecastModel({
     this.list,
     this.cityModel,
   });
@@ -26,4 +27,10 @@ class CityForecastModel {
       forecastList: list?.map((weather) => weather.toEntity()).toList(),
     );
   }
+
+  @override
+  List<Object?> get props => [
+        list,
+        cityModel,
+      ];
 }

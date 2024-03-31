@@ -1,11 +1,12 @@
+import 'package:equatable/equatable.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:rock_weather/core/domain/weather/entities/coordinates_entity.dart';
 
 part 'coordinates_model.g.dart';
 
 @JsonSerializable()
-class CoordinatesModel {
-  CoordinatesModel({
+class CoordinatesModel extends Equatable {
+  const CoordinatesModel({
     this.lon,
     this.lat,
   });
@@ -21,4 +22,10 @@ class CoordinatesModel {
         latitude: lat,
         longitude: lon,
       );
+
+  @override
+  List<Object?> get props => [
+        lat,
+        lon,
+      ];
 }

@@ -1,3 +1,4 @@
+import 'package:equatable/equatable.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:rock_weather/core/data/weather/models/clouds_model.dart';
 import 'package:rock_weather/core/data/weather/models/coordinates_model.dart';
@@ -10,8 +11,8 @@ import 'package:rock_weather/core/domain/weather/entities/weather_data_entity.da
 part 'weather_data_model.g.dart';
 
 @JsonSerializable(explicitToJson: true)
-class WeatherDataModel {
-  WeatherDataModel({
+class WeatherDataModel extends Equatable {
+  const WeatherDataModel({
     this.base,
     this.visibility,
     this.dt,
@@ -56,4 +57,20 @@ class WeatherDataModel {
         clouds: clouds?.toEntity(),
         weathers: weather?.map((weather) => weather.toEntity()).toList(),
       );
+
+  @override
+  List<Object?> get props => [
+        base,
+        visibility,
+        dt,
+        timezone,
+        id,
+        name,
+        coord,
+        main,
+        wind,
+        rain,
+        clouds,
+        weather,
+      ];
 }

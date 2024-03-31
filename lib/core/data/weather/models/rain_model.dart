@@ -1,11 +1,12 @@
+import 'package:equatable/equatable.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:rock_weather/core/domain/weather/entities/rain_entity.dart';
 
 part 'rain_model.g.dart';
 
 @JsonSerializable()
-class RainModel {
-  RainModel({
+class RainModel extends Equatable {
+  const RainModel({
     this.d1h,
   });
 
@@ -18,4 +19,9 @@ class RainModel {
   Rain toEntity() => Rain(
         rainVolumeLastHour: d1h,
       );
+
+  @override
+  List<Object?> get props => [
+        d1h,
+      ];
 }

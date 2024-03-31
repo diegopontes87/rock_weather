@@ -1,11 +1,12 @@
+import 'package:equatable/equatable.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:rock_weather/core/domain/weather/entities/weather_entity.dart';
 
 part 'weather_model.g.dart';
 
 @JsonSerializable()
-class WeatherModel {
-  WeatherModel({
+class WeatherModel extends Equatable {
+  const WeatherModel({
     this.id,
     this.main,
     this.description,
@@ -27,4 +28,10 @@ class WeatherModel {
         description: description,
         icon: icon,
       );
+
+  @override
+  List<Object?> get props => [
+        icon,
+        description,
+      ];
 }

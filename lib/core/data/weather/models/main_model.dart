@@ -1,11 +1,12 @@
+import 'package:equatable/equatable.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:rock_weather/core/domain/weather/entities/core_weather_info_entity.dart';
 
 part 'main_model.g.dart';
 
 @JsonSerializable()
-class MainModel {
-  MainModel({
+class MainModel extends Equatable {
+  const MainModel({
     this.temp,
     this.feelsLike,
     this.tempMin,
@@ -39,4 +40,16 @@ class MainModel {
         pressureGroundLevel: seaLevel,
         pressureSeaLevel: grndLevel,
       );
+
+  @override
+  List<Object?> get props => [
+        temp,
+        feelsLike,
+        tempMin,
+        tempMax,
+        pressure,
+        humidity,
+        seaLevel,
+        grndLevel,
+      ];
 }

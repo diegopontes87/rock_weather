@@ -44,7 +44,10 @@ app.*.map.json
 
 .vscode/*
 
-# Generated files
+# Generated files and Flutter/Dart/Pub related
 *.g.dart
 *.freezed.dart
 lib/env/.weather_env.json
+coverage/
+/coverage/
+pubspec.lock

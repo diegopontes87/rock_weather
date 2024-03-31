@@ -24,6 +24,7 @@ dependencies:
   go_router: ^12.1.1
   get_it: ^7.6.4
   json_annotation: ^4.8.1
+  equatable: ^2.0.0
 
   #Client and Connection Check
   dio: ^5.4.2+1
@@ -44,6 +45,8 @@ dev_dependencies:
   flutter_lints: ^2.0.0
   build_runner: ^2.4.7
   json_serializable: ^6.7.1
+  mockingjay: ^0.3.0
+  mocktail: ^0.3.0
 
 flutter:
   generate: true

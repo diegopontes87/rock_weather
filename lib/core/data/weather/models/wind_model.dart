@@ -1,11 +1,12 @@
+import 'package:equatable/equatable.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:rock_weather/core/domain/weather/entities/wind_entity.dart';
 
 part 'wind_model.g.dart';
 
 @JsonSerializable()
-class WindModel {
-  WindModel({
+class WindModel extends Equatable {
+  const WindModel({
     this.speed,
     this.deg,
     this.gust,
@@ -24,4 +25,11 @@ class WindModel {
         gust: gust,
         windDirectionDegrees: deg,
       );
+
+  @override
+  List<Object?> get props => [
+        speed,
+        deg,
+        gust,
+      ];
 }
