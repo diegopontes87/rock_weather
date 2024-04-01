@@ -68,13 +68,16 @@ class HomeCubit extends Cubit<HomeState> {
   }
 
   void searchCity(String searchedCityName) {
-    final citiesWeatherList = <WeatherData>[];
     final searchedCities = <WeatherData>[];
-    citiesWeatherList.addAll(state.citiesWeather);
-    for (final cityWeatherData in citiesWeatherList) {
-      if (cityWeatherData.locationName!.toLowerCase().startsWith(searchedCityName.toLowerCase())) {
+    final cleanedSearchedCityName = searchedCityName.toLowerCase();
+
+    for (final cityWeatherData in state.citiesWeather) {
+      final cityName = cityWeatherData.locationName?.toLowerCase() ?? '';
+
+      if (cityName.startsWith(cleanedSearchedCityName)) {
         searchedCities.add(cityWeatherData);
       }
+
       emit(
         state.copyWith(searchedCities: searchedCities),
       );
