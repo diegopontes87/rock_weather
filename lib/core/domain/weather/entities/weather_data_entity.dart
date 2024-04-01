@@ -1,3 +1,4 @@
+import 'package:equatable/equatable.dart';
 import 'package:rock_weather/core/domain/weather/entities/clouds_entity.dart';
 import 'package:rock_weather/core/domain/weather/entities/coordinates_entity.dart';
 import 'package:rock_weather/core/domain/weather/entities/core_weather_info_entity.dart';
@@ -5,8 +6,8 @@ import 'package:rock_weather/core/domain/weather/entities/rain_entity.dart';
 import 'package:rock_weather/core/domain/weather/entities/weather_entity.dart';
 import 'package:rock_weather/core/domain/weather/entities/wind_entity.dart';
 
-class WeatherData {
-  WeatherData({
+class WeatherData extends Equatable {
+  const WeatherData({
     this.base,
     this.visibility,
     this.dataCalculationTime,
@@ -32,4 +33,20 @@ class WeatherData {
   final Rain? rain;
   final Clouds? clouds;
   final List<WeatherInfo>? weathers;
+
+  @override
+  List<Object?> get props => [
+        base,
+        visibility,
+        dataCalculationTime,
+        timezone,
+        id,
+        locationName,
+        coordinates,
+        coreWeatherInfo,
+        wind,
+        rain,
+        clouds,
+        weathers,
+      ];
 }

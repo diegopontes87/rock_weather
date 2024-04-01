@@ -1,5 +1,7 @@
-class CoreWeatherInfo {
-  CoreWeatherInfo({
+import 'package:equatable/equatable.dart';
+
+class CoreWeatherInfo extends Equatable {
+  const CoreWeatherInfo({
     this.temp,
     this.tempSensation,
     this.tempMin,
@@ -18,4 +20,16 @@ class CoreWeatherInfo {
   final int? humidity;
   final int? pressureSeaLevel;
   final int? pressureGroundLevel;
+
+  @override
+  List<Object?> get props => [
+        temp,
+        tempSensation,
+        tempMin,
+        tempMax,
+        pressure,
+        humidity,
+        pressureSeaLevel,
+        pressureGroundLevel,
+      ];
 }
