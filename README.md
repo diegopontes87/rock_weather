@@ -5,7 +5,7 @@
 Welcome.
 
 This Flutter Project has the goal to deliver a hibrid mobile app (Android and IOS),
-consuming the Weather [API](https://openweathermap.org/api) for 4 specfic cities.
+consuming the [Weather API](https://openweathermap.org/api) for 4 specfic cities.
 
 - São Paulo
 - Melbourne
@@ -14,8 +14,8 @@ consuming the Weather [API](https://openweathermap.org/api) for 4 specfic cities
 
 The app contains 2 screens:
 
-1 - A list of cities with their current weathers and a search bar;
-2 - A forecast for one specific city from the previous screen.
+- 1 A list of cities with their current weathers and a search bar;
+- 2 A forecast for one specific city from the previous screen.
 
 The chosen architecture for this project was the Clean Architecture and folder the structure is like this:
 
