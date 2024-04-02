@@ -13,6 +13,7 @@ final melbourneWeatherDataModel = WeatherDataModel.fromJson(melbourneWeatherData
 final monteCarloWeatherDataModel = WeatherDataModel.fromJson(monteCarloWeatherDataJson);
 //General Forecast Model
 final cityForecastModel = CityForecastModel.fromJson(cityForecastJson);
+final saoPaulocityForecastModel = CityForecastModel.fromJson(saoPaulocityForecastJson);
 //Named City Model List
 final mockModelList = [
   saoPauloWeatherDataModel,
