@@ -44,7 +44,6 @@ class _ForecastPageState extends State<ForecastPage> {
       child: BlocBuilder<ForecastCubit, ForecastState>(
         builder: (context, state) {
           return Scaffold(
-            extendBodyBehindAppBar: true,
             appBar: PreferredSize(
               preferredSize: const Size.fromHeight(56),
               child: CustomAppBar(
@@ -59,7 +58,6 @@ class _ForecastPageState extends State<ForecastPage> {
                   : SingleChildScrollView(
                       child: Column(
                         children: [
-                          Gap(kToolbarHeight + AppBar().preferredSize.height),
                           const Align(
                             alignment: Alignment.centerLeft,
                             child: Text(
@@ -125,7 +123,8 @@ class _ForecastPageState extends State<ForecastPage> {
                                 ],
                               );
                             }).toList(),
-                          )
+                          ),
+                          const Gap(24),
                         ],
                       ),
                     ),

@@ -39,4 +39,27 @@ abstract class DateTimeUtils {
     String formattedDate = '$day, ${monthNames[monthIndex]}\n${hour}h:00m';
     return formattedDate;
   }
+
+  static String formatDate(int milliseconds) {
+    DateTime date = DateTime.fromMillisecondsSinceEpoch(milliseconds * 1000);
+    List<String> monthNames = [
+      '',
+      'Jan',
+      'Feb',
+      'Mar',
+      'Apr',
+      'May',
+      'Jun',
+      'Jul',
+      'Aug',
+      'Sep',
+      'Oct',
+      'Nov',
+      'Dec',
+    ];
+    int day = date.day;
+    int monthIndex = date.month;
+    String formattedDate = '$day, ${monthNames[monthIndex]}';
+    return formattedDate;
+  }
 }

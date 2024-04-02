@@ -16,7 +16,7 @@ class CustomAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return AppBar(
       centerTitle: true,
-      backgroundColor: Colors.transparent,
+      backgroundColor: AppColors.blue,
       leading: backButtonIsVisible
           ? BackButton(
               onPressed: () => context.pop(),

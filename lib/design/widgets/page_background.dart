@@ -14,9 +14,10 @@ class PageBackground extends StatelessWidget {
     return Container(
       height: MediaQuery.of(context).size.height,
       width: MediaQuery.of(context).size.width,
-      padding: const EdgeInsets.symmetric(
-        horizontal: 12,
-        vertical: 48,
+      padding: const EdgeInsets.only(
+        left: 12,
+        right: 12,
+        top: 0,
       ),
       decoration: const BoxDecoration(
         gradient: LinearGradient(

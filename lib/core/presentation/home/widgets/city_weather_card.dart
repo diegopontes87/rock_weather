@@ -50,7 +50,9 @@ class CityWeatherCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  DateTimeUtils.isDateToday(weatherData.dataCalculationTime ?? 0) ? AppTexts.today : '',
+                  DateTimeUtils.isDateToday(weatherData.dataCalculationTime ?? 0)
+                      ? AppTexts.today
+                      : DateTimeUtils.formatDate(weatherData.dataCalculationTime ?? 0),
                   style: const TextStyle(
                     color: AppColors.white,
                     fontSize: 18,

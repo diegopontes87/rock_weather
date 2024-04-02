@@ -55,7 +55,6 @@ class _HomePageState extends State<HomePage> {
       child: BlocBuilder<HomeCubit, HomeState>(
         builder: (context, state) {
           return Scaffold(
-            extendBodyBehindAppBar: true,
             appBar: const PreferredSize(
               preferredSize: Size.fromHeight(56),
               child: CustomAppBar(
@@ -75,7 +74,6 @@ class _HomePageState extends State<HomePage> {
                     : SingleChildScrollView(
                         child: Column(
                           children: [
-                            Gap(kToolbarHeight + AppBar().preferredSize.height),
                             AppTextField(
                               focusNode: searchFocusNode,
                               prefixIcon: Icons.search,
