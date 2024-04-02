@@ -4,7 +4,7 @@
 
 Welcome.
 
-This Flutter Project has the goal to deliver a hibrid mobile app (Android and IOS),
+This Flutter Project has the goal to deliver a hybrid mobile app (Android and IOS),
 consuming the [Weather API](https://openweathermap.org/api) for 4 specfic cities.
 
 - São Paulo
