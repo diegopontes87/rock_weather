@@ -45,14 +45,14 @@ class HomeCubit extends Cubit<HomeState> {
   void _handleWeatherResponse(Result<WeatherData, AppError> result) {
     result.when(
       (weatherData) {
-        final weatherList = <WeatherData>[];
+        final weatherList = <WeatherData>{};
         weatherList
           ..addAll(state.citiesWeather)
           ..add(weatherData);
 
         emit(
           state.copyWith(
-            citiesWeather: weatherList,
+            citiesWeather: weatherList.toList(),
           ),
         );
       },
@@ -68,7 +68,7 @@ class HomeCubit extends Cubit<HomeState> {
   }
 
   void searchCity(String searchedCityName) {
-    final searchedCities = <WeatherData>[];
+    final searchedCities = <WeatherData>{};
     final cleanedSearchedCityName = searchedCityName.toLowerCase();
 
     for (final cityWeatherData in state.citiesWeather) {
@@ -79,7 +79,7 @@ class HomeCubit extends Cubit<HomeState> {
       }
 
       emit(
-        state.copyWith(searchedCities: searchedCities),
+        state.copyWith(searchedCities: searchedCities.toList()),
       );
     }
   }
