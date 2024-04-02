@@ -5,7 +5,7 @@
 Welcome.
 
 This Flutter Project has the goal to deliver a hybrid mobile app (Android and IOS),
-consuming the [Weather API](https://openweathermap.org/api) for 4 specfic cities.
+consuming the [Weather API](https://openweathermap.org/api) for 4 specific cities.
 
 - São Paulo
 - Melbourne
@@ -17,7 +17,10 @@ The app contains 2 screens:
 - 1 A list of cities with their current weathers and a search bar;
 - 2 A forecast for one specific city from the previous screen.
 
-The chosen architecture for this project was the Clean Architecture and folder the structure is like this:
+### Architecture:
+
+The chosen architecture for this project was the Clean Architecture.
+Below is the folder structure for the project:
 
 ```
 rock_weather
@@ -35,7 +38,7 @@ rock_weather
 
 - Presentation: Layer responsible for holding pages and state managers files
 - Domain: Layer responsible for the use cases and repositories contracts files
-- Data: Layer responsible for the repositories contracts implementations and the access to local and remotes services.
+- Data: Layer responsible for the repositories contracts implementations and the access to local and remote services.
 
 ### Dependencies:
 
