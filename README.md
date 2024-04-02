@@ -19,6 +19,7 @@ The app contains 2 screens:
 
 The chosen architecture for this project was the Clean Architecture and folder the structure is like this:
 
+```
 rock_weather
 ├lib
 │ ├── core
@@ -28,6 +29,7 @@ rock_weather
 │ ├── shared
 │ └── main.dart
 └test
+```
 
 ### Core:
 
