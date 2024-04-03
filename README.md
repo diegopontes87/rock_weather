@@ -74,6 +74,12 @@ Create a **.weather_env.json** into the **/env** folder. In the file you will ne
 }
 ```
 
+Then run:
+
+```
+flutter run --dart-define-from-file=lib/env/.weather_env.json
+```
+
 ## Tests
 
 The core folder was the only one tested.
