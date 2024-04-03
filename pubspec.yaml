@@ -29,12 +29,14 @@ dependencies:
 
   #Client and Connection Check
   dio: ^5.4.2+1
-  internet_connection_checker_plus: ^2.3.0
+  internet_connection_checker_plus: ^2.2.0
 
   #UI
   gap: ^3.0.1
   lottie: ^2.7.0
   cached_network_image: ^3.3.0
+  flutter_native_splash: ^2.3.10
+  flutter_launcher_icons: ^0.13.1
 
 dev_dependencies:
   flutter_test:
@@ -53,3 +55,16 @@ flutter:
     - assets/images/
     - assets/icons/
     - assets/animations/
+
+flutter_native_splash:
+  color: "#232349"
+  image: assets/images/app_logo.png
+
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  remove_alpha_ios: true
+  image_path: "assets/images/app_icon.png"
+  adaptive_icon_foreground: "assets/images/app_icon.png"
+  adaptive_icon_background: "#232349"
+  min_sdk_android: 21
